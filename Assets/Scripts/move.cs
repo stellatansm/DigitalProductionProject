@@ -6,7 +6,6 @@ public class move : MonoBehaviour
 {
     private float horizontal; //for horizontal input
     private float speed = 8f; //speed of the player
-    private float jumpingPower = 16f; 
     private bool isFacingRight = true; //check of player is facing right or left
 
     //serialised fields are needed to ref in unity
@@ -21,16 +20,6 @@ public class move : MonoBehaviour
         //returns a value of +1, 0 or -1 depending on user input
 
         horizontal = Input.GetAxisRaw("Horizontal"); 
-
-        if (Input.GetButtonDown("Jump") && IsGrounded())
-        {
-            rb.velocity = new Vector2(rb.velocity.x, jumpingPower);
-        }
-
-        if (Input.GetButtonUp("Jump") && rb.velocity.y > 0f)
-        {
-            rb.velocity = new Vector2(rb.velocity.x, rb.velocity.y * 0.5f);
-        }
 
         Flip(); //calling flip in so the character can be flipped
     }
