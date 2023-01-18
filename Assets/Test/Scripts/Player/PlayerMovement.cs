@@ -6,11 +6,15 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D playerRigidBody;
+    public Camera camera;
 
     public Sprite idle;
     public Sprite walking;
     public Sprite closedEyes;
     public Sprite breath;
+    public Sprite crouch;
+
+
 
     
     public float speed = 8f;
@@ -25,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
         spriteRenderer= GetComponent<SpriteRenderer>();
 
         spriteRenderer.sprite = idle;
+        camera = Camera.main;
     }
 
     // Update is called once per frame
@@ -34,15 +39,29 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey(KeyCode.V))
         {
-            speed = 4f;
+            speed = 3f;
             spriteRenderer.sprite = breath;
         }
-        else
+
+        else if (Input.GetKey(KeyCode.S))
         {
-            speed = 9f;
+            speed = 2f;
+            spriteRenderer.sprite = crouch;
+        }
+
+        else if (Input.GetKey(KeyCode.LeftShift))
+        {
+            speed = 1f;
+            spriteRenderer.sprite = breath;
+ 
+        }
+
+        else {
+            speed = 6f;
             spriteRenderer.sprite = idle;
         }
 
+  
 
         if (input < 0)
         {
