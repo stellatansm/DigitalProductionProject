@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,7 +25,9 @@ public class PlayerStateManager : MonoBehaviour
     public PlayerHoldBreathState breathState = new PlayerHoldBreathState();
     public PlayerEyesState eyesState = new PlayerEyesState();
     public PlayerIdleState idleState = new PlayerIdleState();
-
+    internal PlayerBaseState yeetState;
+    internal PlayerBaseState twerkState;
+    internal PlayerBaseState killState;
 
     void Start()
     {
@@ -88,5 +91,4 @@ public class PlayerStateManager : MonoBehaviour
         }
         state.EnterState(this);
     }
-
 }
