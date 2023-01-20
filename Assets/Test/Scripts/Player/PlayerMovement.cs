@@ -6,15 +6,12 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public Rigidbody2D playerRigidBody;
-    public Camera camera;
 
     public Sprite idle;
     public Sprite walking;
     public Sprite closedEyes;
     public Sprite breath;
     public Sprite crouch;
-
-
 
     
     public float speed = 8f;
@@ -27,9 +24,9 @@ public class PlayerMovement : MonoBehaviour
     {
         playerRigidBody= GetComponent<Rigidbody2D>();
         spriteRenderer= GetComponent<SpriteRenderer>();
+        Debug.Log("Started");
 
         spriteRenderer.sprite = idle;
-        camera = Camera.main;
     }
 
     // Update is called once per frame

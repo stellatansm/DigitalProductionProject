@@ -13,7 +13,7 @@ public class CameraFollow : MonoBehaviour
 
     void Start()
     {
-        player = GameObject.Find("Player");
+        player = GameObject.Find("PlayerStateTest");
     }
 
     // Update is called once per frame
