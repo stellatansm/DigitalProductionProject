@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public abstract class PlayerBaseState
@@ -9,7 +10,5 @@ public abstract class PlayerBaseState
     
 
     public abstract void OnCollisionEnter(PlayerStateManager player);
-    
 
-    
 }

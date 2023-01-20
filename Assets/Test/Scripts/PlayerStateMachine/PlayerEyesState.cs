@@ -9,7 +9,7 @@ public class PlayerEyesState : PlayerBaseState
 
     public override void UpdateState(PlayerStateManager player)
     {
-        if (Input.GetKeyUp(KeyCode.LeftShift)) //if no longer pressing
+        if (Input.GetKeyUp(KeyCode.C)) //if no longer pressing
         {
             if (Input.GetAxisRaw("Horizontal") == 0) //idle
             {

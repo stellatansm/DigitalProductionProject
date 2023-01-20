@@ -10,7 +10,7 @@ public class PlayerHoldBreathState : PlayerBaseState
     public override void UpdateState(PlayerStateManager player)
     {
 
-        if (Input.GetKeyUp(KeyCode.V)) //if no longer pressing
+        if (Input.GetKeyUp(KeyCode.Z)) //if no longer pressing
         {
             if (Input.GetAxisRaw("Horizontal") == 0) //idle
             {
