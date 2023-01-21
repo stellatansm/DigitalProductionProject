@@ -7,6 +7,7 @@ public class playercollision : MonoBehaviour
         if (collision.transform.tag == "ghost")
         {
             PlayerManager.isGameOver = true;
+            gameObject.SetActive(false);
         }
     }
 } 
