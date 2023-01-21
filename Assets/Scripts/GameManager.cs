@@ -1,9 +1,22 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    void EndGame()
+    bool gameEnd = false;
+
+    public void EndGame()
     {
-        Debug.Log("You died lol");
+        if (gameEnd == false)
+        {
+            gameEnd = true;
+            Debug.Log("Lmao you died");
+            Restart();
+        }
     }
+
+    void Restart() {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
 }
