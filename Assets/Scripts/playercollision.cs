@@ -6,7 +6,7 @@ public class playercollision : MonoBehaviour
     {
         if (collision.transform.tag == "ghost")
         {
-            Debug.Log("fuck you");
+            PlayerManager.isGameOver = true;
         }
     }
 } 
