@@ -3,13 +3,13 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
-    public static bool isGameOver;
+    public static bool isGameOver; //bool to check if game is over
 
-    public GameObject gameOverScreen;
+    public GameObject gameOverScreen; //game over screen
 
-    private void Awake()
+    private void Awake() 
     {
-        isGameOver = false;
+        isGameOver = false; //game is not over by default
     }
 
     // Start is called before the first frame update
@@ -23,11 +23,11 @@ public class PlayerManager : MonoBehaviour
     {
         if (isGameOver)
         {
-            gameOverScreen.SetActive(true);
+            gameOverScreen.SetActive(true); //game over screen will show up when game is over
         }
     }
 
-    public void ReplayLevel()
+    public void ReplayLevel() //resets the level after the user presses replay button 
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
