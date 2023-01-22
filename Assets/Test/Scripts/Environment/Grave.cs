@@ -13,31 +13,35 @@ public class Grave : MonoBehaviour
     public string[] dialogue;
     private int index;
 
-    public GameObject contButton;
+
     public float wordSpeed;
     public bool playerIsClose;
+    public bool start = true;
 
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Z) && playerIsClose)
+        if (Input.GetKeyDown(KeyCode.Z) && playerIsClose && start == true)
         {
             Debug.Log("Interact");
+
             if (dialoguePanel.activeInHierarchy)
             {
                 zeroText();
             }
+            
             else
             {
+                start = false;
                 dialoguePanel.SetActive(true);
                 StartCoroutine(Typing());
             }
         }
 
-        if(dialogueText.text == dialogue[index])
+        else if (Input.GetKeyDown(KeyCode.Z) && start == false)
         {
-            contButton.SetActive(true);
+            NextLine();
         }
     }
 
@@ -45,7 +49,9 @@ public class Grave : MonoBehaviour
     {
         dialogueText.text = "";
         index = 0;
+        start = true;
         dialoguePanel.SetActive(false);
+        
     }
 
     IEnumerator Typing()
@@ -59,8 +65,6 @@ public class Grave : MonoBehaviour
 
     public void NextLine()
     {
-        contButton.SetActive(false);
-
         if (index < dialogue.Length - 1)
         {
             index++;
