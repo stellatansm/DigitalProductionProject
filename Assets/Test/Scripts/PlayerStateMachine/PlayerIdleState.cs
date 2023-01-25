@@ -16,15 +16,15 @@ public class PlayerIdleState : PlayerBaseState
     public override void UpdateState(PlayerStateManager player)
     {
 
-        if (Input.GetKey(KeyCode.Z)) //Holding Breath
+        if (Input.GetKeyDown(KeyCode.X)) //Holding Breath
         {
              player.SwitchState(player.breathState);
         }
-        if (Input.GetKey(KeyCode.X)) //Crouching
+        if (Input.GetKeyDown(KeyCode.C)) //Crouching
         {
             player.SwitchState(player.crouchState);
         }
-        if (Input.GetKeyDown(KeyCode.C)) //covering eyes
+        if (Input.GetKeyDown(KeyCode.LeftShift)) //covering eyes
         {
              player.SwitchState(player.eyesState);
         }
