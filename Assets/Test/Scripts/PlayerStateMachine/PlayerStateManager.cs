@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerStateManager : MonoBehaviour
@@ -9,10 +10,12 @@ public class PlayerStateManager : MonoBehaviour
 
     public SpriteRenderer spriteRenderer;
     public Rigidbody2D playerRB;
+    public GameObject dialogueBox;
 
     public float charSpeed;
     public float dirX;
     public float input;
+
 
     public Sprite idle;
     public Sprite walking;
@@ -25,6 +28,7 @@ public class PlayerStateManager : MonoBehaviour
     public PlayerHoldBreathState breathState = new PlayerHoldBreathState();
     public PlayerEyesState eyesState = new PlayerEyesState();
     public PlayerIdleState idleState = new PlayerIdleState();
+
     internal PlayerBaseState yeetState;
     internal PlayerBaseState twerkState;
     internal PlayerBaseState killState;
@@ -38,18 +42,30 @@ public class PlayerStateManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        input = Input.GetAxisRaw("Horizontal");
+        if (dialogueBox.activeInHierarchy)
+        {
+            charSpeed = 0f;
+    
+        }
 
-        if (input < 0)
+        else
         {
-            spriteRenderer.flipX = true;
+            input = Input.GetAxisRaw("Horizontal");
+
+            if (input < 0)
+            {
+                spriteRenderer.flipX = true;
+            }
+            else if (input > 0)
+            {
+                spriteRenderer.flipX = false;
+            }
+            currentState.UpdateState(this);
+
         }
-        else if (input > 0)
-        {
-            spriteRenderer.flipX = false;
-        }
-        currentState.UpdateState(this);
+
     }
+
     void FixedUpdate() //set to run 50 frames per second
     {
         playerRB.velocity = new Vector2(input * charSpeed, playerRB.velocity.y);
@@ -86,9 +102,10 @@ public class PlayerStateManager : MonoBehaviour
                 spriteRenderer.sprite = idle;
                 charSpeed = 0f;
                 break;
-
+               
 
         }
+
         state.EnterState(this);
     }
 }
